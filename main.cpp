@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <sstream>
 #include <string>
 #include <vector>
 #include <set>              // balance binary Tree(red-black tree)
@@ -11,7 +10,6 @@
 // HW part. 1
 // print出所有實況台裡不重複的觀眾名單
 
-
 // HW part. 2 plus
 // 跟part 1一樣print出觀眾名單
 // 但print完第一個檔案的名單才print第二個檔案的名單
@@ -20,63 +18,84 @@
 // print時說這個觀眾出現在幾個台
 
 
+std::vector<std::string> load_file(std::string file);
 
-/*
-class audience
-{
-public:
-
-    void show_audience_set() const
-    {
-        if (m_audiences.empty()) return;
-
-        for (const auto aud : m_audiences)
-        {
-            std::cout << aud << std::endl;
-        }
-    }
-    int emerge_times(const std::string& name) const
-    {
-        return m_emergence[name];
-    }
-
-private:
-    std::set<std::string> m_audiences;
-    std::map<std::string, int> m_emergence;
-};
-*/
-
-
+std::map<std::string, int> viewer_viewing_now(std::string name);
 
 
 int main(int argc, char* argv[])
 {
+    //      part 1       //
+    std::vector<std::string> all_viewers;
 
-    std::ifstream ifs(argv[1]);
-
-    std::set<std::string> audiences;
-    std::map<std::string, int> emergence;
-    
-    while(true)
+    // upload files 
+    for (int i = 1; i < argc; ++i)
     {
+        std::ifstream ifs(argv[i]);
         std::string line;
         
-        std::getline(ifs, line);
-
-        if (ifs.fail()) break;
-        else
+        while (std::getline(ifs, line))
         {
-            audiences.insert(line);
+            all_viewers.push_back(line);
         }
     }
-    
-    for (const auto aud : audiences)
+
+    std::set<std::string> unique_viewers(
+        all_viewers.cbegin(), all_viewers.cend());
+
+    std::cout << "Part 1:" << std::endl;
+    for (auto viewer : unique_viewers)
     {
-        std::cout << aud << std::endl;
+        std::cout << viewer << std::endl;
+    }
+    std::cout << std::endl << std::endl;
+    
+    //   part 2(plus)    //
+
+    
+    //      part 3       //
+
+    std::map<std::string, int> now_watching;
+    
+    // initialize
+    for (auto name : all_viewers)
+    {
+        now_watching[name] = 0;
+    }
+    
+    // counting
+    for (auto name : all_viewers)
+    {
+        now_watching[name]++;
+    }
+    
+    // print
+    std::cout << "Part 3:" << std::endl;
+    for (auto [name, time] : now_watching)
+    {
+        std::cout << name << ": " << time << std::endl;
     }
 
-
+    std::cout << std::endl;
     
-
+    
     return 0;
+}
+
+
+std::vector<std::string> load_file(std::string file)
+{
+    std::vector<std::string> list;
+
+    while (std::ifstream ifs{ file })
+    {
+        std::string line;
+        ifs >> line;
+
+        std::cout << line << std::endl;
+
+        list.push_back(line);
+    }
+
+    return list;
 }

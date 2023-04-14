@@ -18,10 +18,18 @@
     <ClCompile Include="main.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
+    <ClCompile Include="viewer_list.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="sw.txt" />
     <Text Include="kar8.txt" />
     <Text Include="mochinana.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="viewer_list.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

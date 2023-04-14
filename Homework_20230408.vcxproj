@@ -142,11 +142,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="viewer_list.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="kar8.txt" />
     <Text Include="mochinana.txt" />
     <Text Include="sw.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="viewer_list.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
