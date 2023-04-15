@@ -20,13 +20,11 @@
 
 std::vector<std::string> load_file(std::string file);
 
-std::map<std::string, int> viewer_viewing_now(std::string name);
-
-
 int main(int argc, char* argv[])
 {
     //      part 1       //
     std::vector<std::string> all_viewers;
+    std::map<std::string, int> watching_now;
 
     // upload files 
     for (int i = 1; i < argc; ++i)
@@ -40,6 +38,7 @@ int main(int argc, char* argv[])
         }
     }
 
+    // store all the files to one set
     std::set<std::string> unique_viewers(
         all_viewers.cbegin(), all_viewers.cend());
 
@@ -51,7 +50,12 @@ int main(int argc, char* argv[])
     std::cout << std::endl << std::endl;
     
     //   part 2(plus)    //
+    
+    // std::cout << "Part 2:" << std::endl;
 
+
+
+    std::cout << std::endl << std::endl;
     
     //      part 3       //
 
@@ -77,7 +81,7 @@ int main(int argc, char* argv[])
     }
 
     std::cout << std::endl;
-    
+   
     
     return 0;
 }
